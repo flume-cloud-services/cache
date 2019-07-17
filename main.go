@@ -5,8 +5,8 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/flume-cloud-services/cache/controllers"
 	"github.com/flume-cloud-services/cache/middleware"
-	"github.com/flume-cloud-services/database/controllers"
 )
 
 func main() {
@@ -18,6 +18,11 @@ func main() {
 		}),
 		middleware.AuthMiddleware,
 	))
+
+	http.Handle("/insert", middleware.Middleware(
+		http.HandlerFunc(controllers.InsertData),
+		middleware.AuthMiddleware),
+	)
 
 	log.Println("Starting server on port :8080")
 	log.Fatal(http.ListenAndServe(":8080", nil))
