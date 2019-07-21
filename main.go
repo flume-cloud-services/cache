@@ -21,8 +21,13 @@ func main() {
 
 	http.Handle("/insert", middleware.Middleware(
 		http.HandlerFunc(controllers.InsertData),
-		middleware.AuthMiddleware),
-	)
+		middleware.AuthMiddleware,
+	))
+
+	http.Handle("/get", middleware.Middleware(
+		http.HandlerFunc(controllers.GetData),
+		middleware.AuthMiddleware,
+	))
 
 	log.Println("Starting server on port :8080")
 	log.Fatal(http.ListenAndServe(":8080", nil))
