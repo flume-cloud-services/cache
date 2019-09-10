@@ -19,7 +19,7 @@ docker run -d -p 8080:8080 flumecloudservices/cache
 
 ```bash
 mkdir $GOPATH/src/github.com/flume-cloud-services && cd $GOPATH/src/github.com/flume-cloud-services
-git clone https://github.com/flume-cloud-services/cache.git
+git clone https://github.com/flume-cloud-services/cache.git && cd cache
 go get -d -v
 go install -v
 
